@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ChevronRight, Package, Star, Users, Zap } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -15,8 +16,36 @@ const features = [
 	"Security scanning",
 ];
 
-export default function CatalogDetailPage({ params }: any) {
-	const data = catalog.find((item) => item.slug === params.slug);
+interface CatalogDetailPageProps {
+	params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({
+	params,
+}: CatalogDetailPageProps): Promise<Metadata> {
+	const { slug } = await params;
+	const data = catalog.find((item) => item.slug === slug);
+
+	if (!data) {
+		return {
+			title: "Category Not Found | NpmStats",
+		};
+	}
+
+	return {
+		title: `${data.name} | NpmStats`,
+		description: data.description,
+		alternates: {
+			canonical: `${siteConfig.url}/catalog/${slug}`,
+		},
+	};
+}
+
+export default async function CatalogDetailPage({
+	params,
+}: CatalogDetailPageProps) {
+	const { slug } = await params;
+	const data = catalog.find((item) => item.slug === slug);
 
 	if (!data) {
 		notFound();
@@ -27,7 +56,7 @@ export default function CatalogDetailPage({ params }: any) {
 			<CatalogCategoryJsonLd
 				name={data.name}
 				description={data.description}
-				url={`${siteConfig.url}/catalog/${params.slug}`}
+				url={`${siteConfig.url}/catalog/${slug}`}
 				packages={data.packages || []}
 			/>
 			<div className="relative min-h-screen">

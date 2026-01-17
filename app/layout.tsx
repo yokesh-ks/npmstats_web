@@ -17,6 +17,33 @@ export const metadata: Metadata = {
 	title: siteConfig.title,
 	description: siteConfig.description,
 	keywords: siteConfig.keywords,
+	alternates: {
+		canonical: siteConfig.url,
+	},
+	openGraph: {
+		type: "website",
+		locale: "en_US",
+		url: siteConfig.url,
+		title: siteConfig.title,
+		description: siteConfig.description,
+		siteName: siteConfig.title,
+		images: [
+			{
+				url: siteConfig.ogImage,
+				width: 1200,
+				height: 630,
+				alt: siteConfig.title,
+			},
+		],
+	},
+	twitter: {
+		card: "summary_large_image",
+		site: "@npmstats",
+		creator: "@npmstats",
+		title: siteConfig.title,
+		description: siteConfig.description,
+		images: [siteConfig.ogImage],
+	},
 };
 
 export default function RootLayout({

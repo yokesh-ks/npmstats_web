@@ -1,9 +1,19 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { CatalogJsonLd } from "@/src/components/json-ld";
 import { PopularPackageCard } from "@/src/components/card/popular-package-card";
 import MaxWidthWrapper from "@/src/components/max-width-wrapper";
 import { packages } from "@/src/constants/popular-packages";
 import { siteConfig } from "@/config/site";
+
+export const metadata: Metadata = {
+	title: "Popular NPM Packages | NpmStats",
+	description:
+		"Explore the most popular NPM packages analyzed on NpmStats. Get comprehensive insights and make informed decisions about your dependencies.",
+	alternates: {
+		canonical: `${siteConfig.url}/package`,
+	},
+};
 
 export default function IndexPage() {
 	return (

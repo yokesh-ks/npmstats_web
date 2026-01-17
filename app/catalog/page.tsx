@@ -1,9 +1,19 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { CatalogCard } from "@/src/components/card/catalog-card";
 import { CatalogJsonLd } from "@/src/components/json-ld";
 import MaxWidthWrapper from "@/src/components/max-width-wrapper";
 import { catalog } from "@/src/constants/npm-catalog";
 import { siteConfig } from "@/config/site";
+
+export const metadata: Metadata = {
+	title: "NPM Package Catalog | NpmStats",
+	description:
+		"Browse our comprehensive catalog of tools and resources to enhance your development workflow and make better package decisions.",
+	alternates: {
+		canonical: `${siteConfig.url}/catalog`,
+	},
+};
 
 export default function CatalogPage() {
 	return (
