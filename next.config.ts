@@ -28,6 +28,7 @@ const nextConfig = {
 					}
 				: false,
 	},
+
 	async headers() {
 		return [
 			{
@@ -36,7 +37,7 @@ const nextConfig = {
 					{
 						key: "Content-Security-Policy",
 						value:
-							"default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:;",
+							"default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.clarity.ms; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:;",
 					},
 					{
 						key: "X-Frame-Options",
@@ -54,6 +55,35 @@ const nextConfig = {
 						key: "Permissions-Policy",
 						value:
 							"camera=(), microphone=(), geolocation=(), interest-cohort=()",
+					},
+					// Add preconnect for ProductHunt API
+					{
+						key: "Link",
+						value: "<https://api.producthunt.com>; rel=preconnect; crossorigin",
+					},
+					// Optimize cache headers for static assets
+					{
+						key: "Cache-Control",
+						value: "public, max-age=31536000, immutable",
+					},
+				],
+			},
+			// Specific cache headers for different asset types
+			{
+				source: "/_next/static/(.*)",
+				headers: [
+					{
+						key: "Cache-Control",
+						value: "public, max-age=31536000, immutable",
+					},
+				],
+			},
+			{
+				source: "/api/(.*)",
+				headers: [
+					{
+						key: "Cache-Control",
+						value: "public, max-age=300, s-maxage=600",
 					},
 				],
 			},

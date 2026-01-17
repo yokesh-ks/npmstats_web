@@ -2,6 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
+import Image from "next/image";
 import { authorConfig } from "@/config/author";
 import { companyConfig } from "@/config/company";
 import { BackToTop } from "@/src/components/ui/back-to-top";
@@ -182,12 +183,13 @@ function FooterContent() {
 								rel="noopener noreferrer"
 								className="inline-block hover:opacity-80 transition-opacity"
 							>
-								<img
+								<Image
 									src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=593357&theme=light"
 									alt="NPM Stats - Your Free Tool for Detailed Package Insights | Product Hunt"
-									style={{ width: "250px", height: "54px" }}
-									width="250"
-									height="54"
+									width={250}
+									height={54}
+									priority={false}
+									loading="lazy"
 								/>
 							</a>
 						</div>
