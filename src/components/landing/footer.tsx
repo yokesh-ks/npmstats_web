@@ -167,33 +167,29 @@ function FooterContent() {
 						</div>
 					</div>
 
-					{/* Newsletter Section */}
+					{/* Feedback Section */}
 					<div className="border-t border-gray-800 pt-8 pb-12">
 						<div className="max-w-md mx-auto lg:mx-0">
 							<h3 className="text-lg font-semibold mb-3">
-								Subscribe to our newsletter
+								Share Your Feedback
 							</h3>
-							<p className="text-gray-400 mb-4">
-								Get the latest updates on new features, npm trends, and
-								developer tips.
+							<p className="text-gray-400 mb-6">
+								Help us improve by leaving a review on Product Hunt
 							</p>
-							<form className="flex">
-								<input
-									type="email"
-									placeholder="Enter your email"
-									className="flex-grow px-4 py-2 bg-gray-800 text-white rounded-l-lg focus:outline-none focus:ring-2 focus:ring-super-primary"
-									required
+							<a
+								href="https://www.producthunt.com/products/npmstats/reviews/new?utm_source=badge-product_review&utm_medium=badge&utm_source=badge-npmstats"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="inline-block hover:opacity-80 transition-opacity"
+							>
+								<img
+									src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=593357&theme=light"
+									alt="NPM Stats - Your Free Tool for Detailed Package Insights | Product Hunt"
+									style={{ width: "250px", height: "54px" }}
+									width="250"
+									height="54"
 								/>
-								<button
-									type="submit"
-									className="px-4 py-2 bg-super-primary text-[#000080] font-medium rounded-r-lg hover:bg-opacity-90 transition-colors duration-300"
-								>
-									Subscribe
-								</button>
-							</form>
-							<p className="text-xs text-gray-500 mt-2">
-								By subscribing, you agree to our Privacy Policy.
-							</p>
+							</a>
 						</div>
 					</div>
 
