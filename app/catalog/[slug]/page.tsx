@@ -9,6 +9,12 @@ import { Badge } from "@/src/components/ui/badge";
 import { catalog } from "@/src/constants/npm-catalog";
 import { siteConfig } from "@/config/site";
 
+export async function generateStaticParams() {
+	return catalog.map((item) => ({
+		slug: item.slug,
+	}));
+}
+
 const features = [
 	"Real-time analysis",
 	"Detailed insights",

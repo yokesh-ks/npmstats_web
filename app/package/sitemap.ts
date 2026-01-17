@@ -3,6 +3,8 @@ import { packages } from "@/src/constants/popular-packages";
 
 const BASE_URL = "https://npmstats.ingeniousclan.com";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
 	// Dynamic package pages
 	const packagePages: MetadataRoute.Sitemap = packages.map((pkg) => ({

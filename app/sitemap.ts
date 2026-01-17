@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 
 const BASE_URL = "https://npmstats.ingeniousclan.com";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
 	// Static pages
 	const staticPages: MetadataRoute.Sitemap = [
