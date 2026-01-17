@@ -122,11 +122,11 @@ export function CTA() {
 									</div>
 								</div>
 								<div className="flex justify-center mt-4 space-x-6 opacity-70">
-									<div className="text-gray-600 font-mono text-sm">
+									<div className="text-gray-700 font-mono text-sm">
 										Microsoft
 									</div>
-									<div className="text-gray-600 font-mono text-sm">Airbnb</div>
-									<div className="text-gray-600 font-mono text-sm">Netflix</div>
+									<div className="text-gray-700 font-mono text-sm">Airbnb</div>
+									<div className="text-gray-700 font-mono text-sm">Netflix</div>
 								</div>
 							</div>
 						</div>

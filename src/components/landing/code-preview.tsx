@@ -43,8 +43,8 @@ export function CodePreview() {
 				</div>
 
 				{/* Code Content */}
-				<pre className="overflow-x-auto rounded bg-neutral-800 p-4 text-left text-sm">
-					<code className="language-json text-xs md:text-sm">
+				<pre className="overflow-x-auto rounded bg-neutral-800 p-4 text-left text-sm text-neutral-100">
+					<code className="language-json text-xs md:text-sm text-neutral-100">
 						{`{`}
 						<JsonProperty
 							name="name"

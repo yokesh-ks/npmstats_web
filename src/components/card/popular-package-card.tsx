@@ -26,7 +26,12 @@ export function PopularPackageCard({ pkg }: { pkg: string }) {
 							{pkg}
 						</CardTitle>
 					</div>
-					<Button variant="ghost" size="icon" className="h-8 w-8">
+					<Button
+						variant="ghost"
+						size="icon"
+						className="h-8 w-8"
+						aria-label="View package details"
+					>
 						<ExternalLink className="h-4 w-4" />
 					</Button>
 				</div>

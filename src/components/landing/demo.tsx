@@ -45,6 +45,7 @@ export function Demo() {
 										variant="ghost"
 										size="icon"
 										className="hover:bg-primary-foreground/10"
+										aria-label="Settings"
 									>
 										<Settings className="h-5 w-5" />
 									</Button>
@@ -52,6 +53,7 @@ export function Demo() {
 										variant="ghost"
 										size="icon"
 										className="hover:bg-primary-foreground/10"
+										aria-label="Notifications"
 									>
 										<Bell className="h-5 w-5" />
 									</Button>
@@ -103,7 +105,7 @@ export function Demo() {
 												Weekly Downloads
 											</p>
 											<p className="text-xl font-bold">18.4M</p>
-											<p className="mt-1 text-xs text-green-600">↑ 7.2%</p>
+											<p className="mt-1 text-xs text-green-700">↑ 7.2%</p>
 										</CardContent>
 									</Card>
 									<Card className="bg-muted/50">
@@ -123,7 +125,7 @@ export function Demo() {
 												Dependencies
 											</p>
 											<p className="text-xl font-bold">3</p>
-											<p className="mt-1 text-xs text-green-600">
+											<p className="mt-1 text-xs text-green-700">
 												All up to date
 											</p>
 										</CardContent>
@@ -134,7 +136,7 @@ export function Demo() {
 												Health Score
 											</p>
 											<p className="text-xl font-bold">98/100</p>
-											<p className="mt-1 text-xs text-green-600">Excellent</p>
+											<p className="mt-1 text-xs text-green-700">Excellent</p>
 										</CardContent>
 									</Card>
 								</div>

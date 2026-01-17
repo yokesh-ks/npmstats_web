@@ -144,10 +144,20 @@ export function HowItWorks() {
 									<CardHeader className="bg-primary text-primary-foreground flex flex-row justify-between items-center p-3">
 										<span className="font-bold">React Package Analysis</span>
 										<div className="flex space-x-2">
-											<Button variant="ghost" size="icon" className="h-8 w-8">
+											<Button
+												variant="ghost"
+												size="icon"
+												className="h-8 w-8"
+												aria-label="Share analysis"
+											>
 												<Share2 className="h-4 w-4" />
 											</Button>
-											<Button variant="ghost" size="icon" className="h-8 w-8">
+											<Button
+												variant="ghost"
+												size="icon"
+												className="h-8 w-8"
+												aria-label="Download report"
+											>
 												<Download className="h-4 w-4" />
 											</Button>
 										</div>
@@ -178,7 +188,7 @@ export function HowItWorks() {
 												chart={
 													<div className="flex items-center justify-center h-20">
 														<div className="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center">
-															<Shield className="h-10 w-10 text-green-600" />
+															<Shield className="h-10 w-10 text-green-700" />
 														</div>
 													</div>
 												}

@@ -45,7 +45,7 @@ function HeaderContent() {
 		>
 			<nav className="container flex items-center justify-between mx-auto px-4">
 				<div className="flex items-center">
-					<Link href="/" className="relative group">
+					<Link href="/" className="relative group" aria-label="npmstats home">
 						<AppLogo />
 					</Link>
 				</div>
@@ -114,7 +114,9 @@ function HeaderContent() {
 										variant="default"
 										className="w-full bg-gradient-primary text-white hover:bg-gradient-primary/90"
 									>
-										<Link href={link.href}>{link.name}</Link>
+										<Link href={link.href} tabIndex={isMobileMenuOpen ? 0 : -1}>
+											{link.name}
+										</Link>
 									</Button>
 								) : (
 									<Button
@@ -122,7 +124,9 @@ function HeaderContent() {
 										variant="ghost"
 										className="w-full justify-start text-muted-foreground hover:text-primary hover:bg-primary/10"
 									>
-										<Link href={link.href}>{link.name}</Link>
+										<Link href={link.href} tabIndex={isMobileMenuOpen ? 0 : -1}>
+											{link.name}
+										</Link>
 									</Button>
 								)}
 							</li>

@@ -11,7 +11,7 @@ export function FAQ() {
 					<h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#000080] animate__animated animate__fadeIn">
 						Frequently Asked Questions
 					</h2>
-					<p className="text-lg text-gray-600 max-w-2xl mx-auto animate__animated animate__fadeIn">
+					<p className="text-lg text-gray-700 max-w-2xl mx-auto animate__animated animate__fadeIn">
 						Everything you need to know about NpmStats
 					</p>
 				</div>
@@ -31,8 +31,8 @@ export function FAQ() {
 						className="mt-12 text-center animate__animated animate__fadeIn"
 						style={{ animationDelay: "0.5s" }}
 					>
-						<p className="text-gray-600 mb-4">
-							Still have questions? We&apos;re here to help.
+						<p className="text-gray-700 mb-4">
+							Still have questions? We're here to help.
 						</p>
 						<a
 							href="#cta"
@@ -83,7 +83,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 					isOpen ? "block" : "hidden"
 				}`}
 			>
-				<p className="text-gray-600">{answer}</p>
+				<p className="text-gray-700">{answer}</p>
 			</div>
 		</div>
 	);
