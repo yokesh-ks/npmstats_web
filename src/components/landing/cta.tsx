@@ -114,21 +114,6 @@ export function CTA() {
 									</li>
 								))}
 							</ul>
-
-							<div className="mt-auto pt-6 border-t border-gray-200">
-								<div className="flex items-center justify-center space-x-4">
-									<div className="text-sm text-gray-500">
-										Trusted by developers at:
-									</div>
-								</div>
-								<div className="flex justify-center mt-4 space-x-6 opacity-70">
-									<div className="text-gray-700 font-mono text-sm">
-										Microsoft
-									</div>
-									<div className="text-gray-700 font-mono text-sm">Airbnb</div>
-									<div className="text-gray-700 font-mono text-sm">Netflix</div>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -145,38 +130,6 @@ export function CTA() {
 						From solo developers to enterprise teams, NpmStats is the trusted
 						solution for making informed package decisions.
 					</p>
-					<div className="flex flex-wrap justify-center items-center space-x-4 space-y-4 sm:space-y-0">
-						<div className="flex items-center">
-							<div className="flex -space-x-4">
-								{["JS", "MT", "AR", "DK", "+"].map((initial, index) => (
-									<div
-										key={index}
-										className={`w-10 h-10 rounded-full ${
-											index % 2 === 0 ? "bg-super-primary" : "bg-white"
-										} flex items-center justify-center text-[#000080] font-bold text-xs border-2 border-white`}
-									>
-										{initial}
-									</div>
-								))}
-							</div>
-							<div className="ml-4 text-gray-200 text-sm">
-								5,200+ users worldwide
-							</div>
-						</div>
-						<div className="h-8 border-l border-gray-400 hidden sm:block" />
-						<div className="flex items-center">
-							{[...Array(5)].map((_, index) => (
-								<Star
-									key={index}
-									className="text-super-primary w-5 h-5"
-									fill="currentColor"
-								/>
-							))}
-							<div className="ml-2 text-gray-200 text-sm">
-								4.9/5 from 300+ reviews
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 

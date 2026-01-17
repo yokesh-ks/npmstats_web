@@ -21,9 +21,12 @@ const nextConfig = {
 		NEXT_PUBLIC_BUNDLEPHOBIA_API_ENDPOINT: "https://bundlephobia.com",
 	},
 	compiler: {
-		removeConsole: process.env.NODE_ENV === 'production' ? {
-			exclude: ['error']
-		} : false,
+		removeConsole:
+			process.env.NODE_ENV === "production"
+				? {
+						exclude: ["error"],
+					}
+				: false,
 	},
 	async headers() {
 		return [
