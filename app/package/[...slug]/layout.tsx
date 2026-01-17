@@ -23,7 +23,8 @@ export default async function PackageLayout({
 	similar,
 	params,
 }: PackageLayoutProps) {
-	const packageName = decodeURIComponent(params?.slug.join("/"));
+	const resolvedParams = await params;
+	const packageName = decodeURIComponent(resolvedParams?.slug.join("/"));
 	const data = await API.getPackageDetails(packageName);
 
 	if (!data?._id) {
