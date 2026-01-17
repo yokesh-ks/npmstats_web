@@ -55,6 +55,77 @@ export default function RootLayout({
 					`}
 				</Script>
 
+				{/* JSON-LD Structured Data */}
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{
+						__html: JSON.stringify({
+							"@context": "https://schema.org",
+							"@graph": [
+								{
+									"@type": "WebSite",
+									"@id": siteConfig.url + "/#website",
+									url: siteConfig.url,
+									name: siteConfig.title,
+									description: siteConfig.description,
+									publisher: {
+										"@id": siteConfig.url + "/#organization",
+									},
+									potentialAction: [
+										{
+											"@type": "SearchAction",
+											target: {
+												"@type": "EntryPoint",
+												urlTemplate:
+													siteConfig.url + "/package/{search_term_string}",
+											},
+											"query-input": "required name=search_term_string",
+										},
+									],
+									inLanguage: "en-US",
+								},
+								{
+									"@type": "Organization",
+									"@id": siteConfig.url + "/#organization",
+									name: "Ingenious Clan",
+									url: "https://www.ingeniousclan.com",
+									sameAs: ["https://www.linkedin.com/company/ingeniousclan"],
+									logo: {
+										"@type": "ImageObject",
+										url: siteConfig.url + "/favicon.ico",
+									},
+								},
+								{
+									"@type": "SoftwareApplication",
+									"@id": siteConfig.url + "/#softwareapplication",
+									name: "NpmStats",
+									description: siteConfig.description,
+									url: siteConfig.url,
+									applicationCategory: "DeveloperApplication",
+									operatingSystem: "Web Browser",
+									offers: {
+										"@type": "Offer",
+										price: "0",
+										priceCurrency: "USD",
+									},
+									provider: {
+										"@id": siteConfig.url + "/#organization",
+									},
+									featureList: [
+										"NPM Package Statistics",
+										"Download Analytics",
+										"Bundle Size Analysis",
+										"Dependency Analysis",
+										"Package Comparison",
+										"Security Scanning",
+									],
+									keywords: siteConfig.keywords.join(", "),
+								},
+							],
+						}).replace(/</g, "\\u003c"),
+					}}
+				/>
+
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"
