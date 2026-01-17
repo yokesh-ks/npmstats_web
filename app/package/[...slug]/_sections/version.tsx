@@ -31,8 +31,8 @@ interface VersionDates {
 }
 
 interface VersionProps {
-	versions: VersionDates;
-	tags: VersionTags;
+	versions: VersionDates | undefined;
+	tags: VersionTags | undefined;
 }
 
 const formatDate = (date: string | undefined, formatStr: string) => {
@@ -41,15 +41,18 @@ const formatDate = (date: string | undefined, formatStr: string) => {
 };
 
 export const Version = ({ versions, tags }: VersionProps) => {
-	const sortedVersions = Object.entries(versions)
+	const safeVersions = versions || {};
+	const safeTags = tags || {};
+
+	const sortedVersions = Object.entries(safeVersions)
 		.filter(([key]) => !["modified", "created"].includes(key))
 		.sort(([, a], [, b]) => {
 			if (!a || !b) return 0;
 			return new Date(b).getTime() - new Date(a).getTime();
 		});
 
-	const latestVersion = tags?.latest;
-	const latestDate = versions[latestVersion];
+	const latestVersion = safeTags?.latest;
+	const latestDate = safeVersions[latestVersion];
 
 	return (
 		<div className="space-y-6">
@@ -110,7 +113,7 @@ export const Version = ({ versions, tags }: VersionProps) => {
 							</TableRow>
 						</TableHeader>
 						<TableBody>
-							{Object.entries(tags).map(([key, value]) => (
+							{Object.entries(safeTags).map(([key, value]) => (
 								<TableRow key={key}>
 									<TableCell>
 										<Badge
@@ -122,7 +125,7 @@ export const Version = ({ versions, tags }: VersionProps) => {
 									</TableCell>
 									<TableCell className="font-medium">{value}</TableCell>
 									<TableCell className="text-muted-foreground">
-										{formatDate(versions[value], "PPP 'at' p")}
+										{formatDate(safeVersions[value], "PPP 'at' p")}
 									</TableCell>
 								</TableRow>
 							))}

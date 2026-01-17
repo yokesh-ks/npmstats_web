@@ -1,43 +1,30 @@
 import Fetch from "@/services/fetch";
+import { getDownloadRange, getPackageStats } from "@/services/npm-api";
 
-const apiUrl = (path: string) =>
-	`${process.env.NEXT_PUBLIC_APP_URL}/api/${path}`;
+export interface PackageAnalysis {
+	score?: number;
+	collected?: {
+		metadata?: {
+			name?: string;
+			version?: string;
+			description?: string;
+		};
+		github?: {
+			starsCount?: number;
+			forksCount?: number;
+			issues?: {
+				count?: number;
+			};
+		};
+	};
+	[key: string]: any;
+}
 
 class API {
-	static async getPackageDetails(packageName: string) {
-		try {
-			const response = await Fetch.getJSON(apiUrl(`npm/${packageName}`), {
-				next: { revalidate: 3600 },
-			});
-			return response?.result;
-		} catch {
-			// continue regardless of error
-		}
-	}
-
-	static async getSimilarPackages(packageName: string) {
-		try {
-			const response = await Fetch.getJSON(
-				apiUrl(`npm/similar/${packageName}`),
-				{
-					next: { revalidate: 3600 },
-				},
-			);
-			return response?.result;
-		} catch {
-			// continue regardless of error
-		}
-	}
-
 	static async getDownloadData(period: string, packageName: string) {
 		try {
-			const response = await Fetch.getJSON(
-				apiUrl(`npm/range/${period}/${packageName}`),
-				{
-					next: { revalidate: 3600 },
-				},
-			);
-			return response?.result;
+			const response = await getDownloadRange(period, packageName);
+			return response;
 		} catch {
 			// continue regardless of error
 		}
@@ -55,28 +42,13 @@ class API {
 		}
 	}
 
-	static async packageAnalysis(packageName: string) {
+	static async packageAnalysis(packageName: string): Promise<PackageAnalysis | undefined> {
 		try {
 			const url = `${process.env.NEXT_PUBLIC_NPMIO_API_ENDPOINT}/package`;
 			const response = await Fetch.getJSON(`${url}/${packageName}`, {
 				next: { revalidate: 3600 },
 			});
-			return response;
-		} catch {
-			// continue regardless of error
-		}
-	}
-
-	static async getBundleSize(packageName: string) {
-		try {
-			const url = `${process.env.NEXT_PUBLIC_BUNDLEPHOBIA_API_ENDPOINT}/api/size`;
-			const response = await Fetch.getJSON(
-				`${url}/?package=${packageName}&record=true`,
-				{
-					next: { revalidate: 3600 },
-				},
-			);
-			return response;
+			return response as PackageAnalysis;
 		} catch {
 			// continue regardless of error
 		}
@@ -84,10 +56,8 @@ class API {
 
 	static async getPackageStats(packageName: string) {
 		try {
-			const response = await Fetch.getJSON(apiUrl(`npm/stats/${packageName}`), {
-				next: { revalidate: 3600 },
-			});
-			return response?.result;
+			const response = await getPackageStats(packageName);
+			return response;
 		} catch {
 			// continue regardless of error
 		}

@@ -6,10 +6,11 @@ import { CatalogCategoryJsonLd } from "@/src/components/json-ld";
 import { PopularPackageCard } from "@/src/components/card/popular-package-card";
 import MaxWidthWrapper from "@/src/components/max-width-wrapper";
 import { Badge } from "@/src/components/ui/badge";
-import { catalog } from "@/src/constants/npm-catalog";
+import { getCatalogData, getCatalogItem } from "../actions";
 import { siteConfig } from "@/config/site";
 
 export async function generateStaticParams() {
+	const catalog = await getCatalogData();
 	return catalog.map((item) => ({
 		slug: item.slug,
 	}));
@@ -30,7 +31,7 @@ export async function generateMetadata({
 	params,
 }: CatalogDetailPageProps): Promise<Metadata> {
 	const { slug } = await params;
-	const data = catalog.find((item) => item.slug === slug);
+	const data = await getCatalogItem(slug);
 
 	if (!data) {
 		return {
@@ -51,7 +52,7 @@ export default async function CatalogDetailPage({
 	params,
 }: CatalogDetailPageProps) {
 	const { slug } = await params;
-	const data = catalog.find((item) => item.slug === slug);
+	const data = await getCatalogItem(slug);
 
 	if (!data) {
 		notFound();

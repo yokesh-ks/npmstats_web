@@ -41,7 +41,7 @@ interface SimilarPackageProps {
 	data: SimilarPackageData[] | null;
 }
 
-export const SimilarPackage = ({ data }: SimilarPackageProps) => {
+export const PageClient = ({ data }: SimilarPackageProps) => {
 	if (!data) return null;
 
 	return (

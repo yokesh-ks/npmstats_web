@@ -3,7 +3,7 @@ import Link from "next/link";
 import { CatalogCard } from "@/src/components/card/catalog-card";
 import { CatalogJsonLd } from "@/src/components/json-ld";
 import MaxWidthWrapper from "@/src/components/max-width-wrapper";
-import { catalog } from "@/src/constants/npm-catalog";
+import { getCatalogData } from "./actions";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -15,7 +15,9 @@ export const metadata: Metadata = {
 	},
 };
 
-export default function CatalogPage() {
+export default async function CatalogPage() {
+	const catalog = await getCatalogData();
+
 	return (
 		<>
 			<CatalogJsonLd

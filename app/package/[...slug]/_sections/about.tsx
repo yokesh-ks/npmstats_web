@@ -80,7 +80,7 @@ export const About = ({ data }: AboutProps) => {
 					</CardHeader>
 					<CardContent>
 						<div className="flex flex-wrap gap-2">
-							{data.keywords.map((keyword) => (
+							{[...new Set(data.keywords)].map((keyword) => (
 								<Badge
 									key={keyword}
 									variant="secondary"

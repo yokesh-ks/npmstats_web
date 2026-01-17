@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DownloadLytics } from "@/src/components/sections/package/download-analytics";
+import { DownloadLytics } from "./_sections/download-analytics";
 import { siteConfig } from "@/config/site";
 
 interface PackagePageProps {

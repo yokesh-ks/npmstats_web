@@ -12,14 +12,8 @@ import {
 	CardTitle,
 } from "@/src/components/ui/card";
 import { Progress } from "@/src/components/ui/progress";
-import { TreemapSection } from "./treemap";
-
-interface BundleData {
-	size: number;
-	gzip: number;
-	dependencyCount?: number;
-	dependencySizes?: Record<string, number>;
-}
+import { TreemapSection } from "./_sections/treemap";
+import type { BundleData } from "@/services/bundlephobia-api";
 
 interface BundleCheckProps {
 	data: BundleData | null;

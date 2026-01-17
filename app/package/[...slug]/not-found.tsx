@@ -3,7 +3,7 @@ import Link from "next/link";
 import MaxWidthWrapper from "@/src/components/max-width-wrapper";
 import { Button } from "@/src/components/ui/button";
 
-export function PackageNotFound() {
+export default function NotFoundPage() {
 	return (
 		<MaxWidthWrapper className="py-14">
 			<div className="flex h-[450px] shrink-0 items-center justify-center rounded-lg border bg-card p-8">

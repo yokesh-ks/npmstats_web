@@ -1,15 +1,24 @@
-function handleErrors(response: Response): any {
-	return new Promise<void>((resolve, reject) => {
-		if (!response.ok) {
-			return reject(response);
+async function handleErrors(response: Response): Promise<unknown> {
+	if (!response.ok) {
+		let errorMessage = `HTTP ${response.status}: ${response.statusText}`;
+
+		try {
+			const errorData = await response.json();
+			if (errorData.error) {
+				errorMessage = errorData.error;
+			}
+		} catch {
+			// If we can't parse the error response, use the default message
 		}
 
-		if (response.status === 204) {
-			return resolve();
-		}
+		throw new Error(errorMessage);
+	}
 
-		return response.json().then(resolve).catch(resolve);
-	});
+	if (response.status === 204) {
+		return null;
+	}
+
+	return response.json();
 }
 
 function getHeaders() {
@@ -29,7 +38,7 @@ class Fetch {
 		}).then(handleErrors);
 	}
 
-	static postJSON(url: string, data: any = {}) {
+	static postJSON(url: string, data: Record<string, unknown> = {}) {
 		return fetch(url, {
 			method: "POST",
 			headers: getHeaders(),

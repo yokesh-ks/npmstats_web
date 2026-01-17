@@ -24,7 +24,7 @@ import { TabsList, TabsTrigger } from "@/src/components/ui/tabs";
 
 interface PackageData {
 	_id: string;
-	description: string;
+	description?: string;
 	"dist-tags": {
 		latest: string;
 		[key: string]: string;

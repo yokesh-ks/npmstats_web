@@ -7,7 +7,7 @@ import millify from "millify";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import API from "@/services/API";
+import { getDownloadData } from "../actions";
 import { Button } from "@/src/components/ui/button";
 import { Card, CardContent } from "@/src/components/ui/card";
 
@@ -61,7 +61,7 @@ export const DownloadLytics = () => {
 				const startDate = djsToStartDate(dayjs("2015-01-10"));
 				period = `${startDate}:${endDate}`;
 			}
-			const response = await API.getDownloadData(period!, packageName);
+			const response = await getDownloadData(period!, packageName);
 			setDownloadData(response?.downloads || []);
 		})();
 	}, [activePeriod, packageName]);

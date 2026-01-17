@@ -1,11 +1,11 @@
-import API from "@/services/API";
+import { getPackageData } from "./actions";
 import { PackageJsonLd } from "@/src/components/json-ld";
 import { TopPackageHead } from "@/src/components/card/top-package-head";
 import MaxWidthWrapper from "@/src/components/max-width-wrapper";
-import { About } from "@/src/components/sections/package/about";
-import { DownloadLytics } from "@/src/components/sections/package/download-analytics";
-import { PackageNotFound } from "@/src/components/sections/package/not-found";
-import { Version } from "@/src/components/sections/package/version";
+import { About } from "./_sections/about";
+import { DownloadLytics } from "./_sections/download-analytics";
+import { notFound } from "next/navigation";
+import { Version } from "./_sections/version";
 import { Card } from "@/src/components/ui/card";
 import { Tabs, TabsContent } from "@/src/components/ui/tabs";
 import { siteConfig } from "@/config/site";
@@ -27,10 +27,10 @@ export default async function PackageLayout({
 }: PackageLayoutProps) {
 	const resolvedParams = await params;
 	const packageName = decodeURIComponent(resolvedParams?.slug.join("/"));
-	const data = await API.getPackageDetails(packageName);
+	const data = await getPackageData(packageName);
 
 	if (!data?._id) {
-		return <PackageNotFound />;
+		return notFound();
 	}
 
 	return (
