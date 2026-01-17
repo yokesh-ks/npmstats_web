@@ -10,9 +10,6 @@ const nextConfig = {
 			},
 		],
 	},
-	experimental: {
-		optimizeCss: true,
-	},
 	env: {
 		// NPM Download Statistics API
 		NEXT_PUBLIC_NPM_API_ENDPOINT: "https://api.npmjs.org",
