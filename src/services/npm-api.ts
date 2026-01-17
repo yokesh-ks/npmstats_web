@@ -11,7 +11,10 @@ export interface DownloadPoint {
 	[key: string]: any;
 }
 
-export async function getDownloadPoint(period: string, packageName: string): Promise<DownloadPoint | null> {
+export async function getDownloadPoint(
+	period: string,
+	packageName: string,
+): Promise<DownloadPoint | null> {
 	try {
 		const url = `${NPM_API_ENDPOINT}/point/${period}/${packageName}`;
 		const response = await Fetch.getJSON(url);
@@ -33,7 +36,10 @@ export interface DownloadRange {
 	[key: string]: any;
 }
 
-export async function getDownloadRange(period: string, packageName: string): Promise<DownloadRange | null> {
+export async function getDownloadRange(
+	period: string,
+	packageName: string,
+): Promise<DownloadRange | null> {
 	try {
 		const url = `${NPM_API_ENDPOINT}/range/${period}/${packageName}`;
 		const response = await Fetch.getJSON(url);
@@ -51,11 +57,11 @@ export async function getPackageStats(packageName: string) {
 		const period = `${startDate}:${endDate}`;
 
 		const pointsApiUrl = `${NPM_API_ENDPOINT}/point/${period}/${packageName}`;
-		const pointsResponse = await Fetch.getJSON(pointsApiUrl) as DownloadPoint;
+		const pointsResponse = (await Fetch.getJSON(pointsApiUrl)) as DownloadPoint;
 
 		// Get package analysis from npm.io API
 		const analysisUrl = `${process.env.NEXT_PUBLIC_NPMIO_API_ENDPOINT}/package/${packageName}`;
-		const packageDetails = await Fetch.getJSON(analysisUrl) as any;
+		const packageDetails = (await Fetch.getJSON(analysisUrl)) as any;
 
 		return [
 			{ label: "Download", value: pointsResponse?.downloads },

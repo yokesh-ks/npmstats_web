@@ -42,7 +42,9 @@ class API {
 		}
 	}
 
-	static async packageAnalysis(packageName: string): Promise<PackageAnalysis | undefined> {
+	static async packageAnalysis(
+		packageName: string,
+	): Promise<PackageAnalysis | undefined> {
 		try {
 			const url = `${process.env.NEXT_PUBLIC_NPMIO_API_ENDPOINT}/package`;
 			const response = await Fetch.getJSON(`${url}/${packageName}`, {

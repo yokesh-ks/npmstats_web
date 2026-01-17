@@ -24,7 +24,8 @@ const nextConfig = {
 				headers: [
 					{
 						key: "Content-Security-Policy",
-						value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:;",
+						value:
+							"default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:;",
 					},
 					{
 						key: "X-Frame-Options",
@@ -40,7 +41,8 @@ const nextConfig = {
 					},
 					{
 						key: "Permissions-Policy",
-						value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+						value:
+							"camera=(), microphone=(), geolocation=(), interest-cohort=()",
 					},
 				],
 			},

@@ -14,3 +14,23 @@ export function formatNumber(num: number): string {
 	}
 	return num.toString();
 }
+
+export function addUtmParameters(url: string): string {
+	const utmParams = new URLSearchParams({
+		utm_source: "npmstats.ingeniousclan.com",
+		utm_medium: "website",
+		ref: "npmstats.ingeniousclan.com",
+	});
+
+	try {
+		const urlObj = new URL(url);
+		// Add UTM parameters to existing search params
+		for (const [key, value] of utmParams) {
+			urlObj.searchParams.set(key, value);
+		}
+		return urlObj.toString();
+	} catch {
+		// If URL is invalid, return as is
+		return url;
+	}
+}

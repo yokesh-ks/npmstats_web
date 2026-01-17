@@ -32,9 +32,11 @@ export interface PackageDetails {
 	[key: string]: any;
 }
 
-export async function getPackageDetails(packageName: string): Promise<PackageDetails> {
+export async function getPackageDetails(
+	packageName: string,
+): Promise<PackageDetails> {
 	const url = `${NPM_REGISTRY_ENDPOINT}/${packageName}`;
-	const response = await Fetch.getJSON(url) as any;
+	const response = (await Fetch.getJSON(url)) as any;
 
 	if (!response?._id) {
 		throw new Error("Package Details Not Found");

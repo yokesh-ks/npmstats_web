@@ -7,7 +7,9 @@ export interface BundleData {
 	dependencySizes?: Record<string, number>;
 }
 
-export async function getBundleSize(packageName: string): Promise<BundleData | null> {
+export async function getBundleSize(
+	packageName: string,
+): Promise<BundleData | null> {
 	try {
 		const url = `${process.env.NEXT_PUBLIC_BUNDLEPHOBIA_API_ENDPOINT}/api/size`;
 		const response = await Fetch.getJSON(

@@ -13,6 +13,7 @@ import {
 	CardTitle,
 } from "@/src/components/ui/card";
 import { ScrollArea } from "@/src/components/ui/scroll-area";
+import { addUtmParameters } from "@/src/lib/utils";
 
 interface PackageData {
 	name: string;
@@ -49,7 +50,11 @@ export const About = ({ data }: AboutProps) => {
 				<CardContent className="flex gap-3">
 					{githubUrl && (
 						<Button asChild variant="outline" size="sm" className="gap-2">
-							<a href={githubUrl} target="_blank" rel="noopener noreferrer">
+							<a
+								href={addUtmParameters(githubUrl)}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								<Github className="h-4 w-4" />
 								GitHub Repository
 							</a>
@@ -57,7 +62,11 @@ export const About = ({ data }: AboutProps) => {
 					)}
 					{data.homepage && (
 						<Button asChild variant="outline" size="sm" className="gap-2">
-							<a href={data.homepage} target="_blank" rel="noopener noreferrer">
+							<a
+								href={addUtmParameters(data.homepage)}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								<ExternalLink className="h-4 w-4" />
 								Homepage
 							</a>

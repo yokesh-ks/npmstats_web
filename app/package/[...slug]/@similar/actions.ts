@@ -60,21 +60,23 @@ export async function getSimilarPackages(packageName: string) {
 				name: item,
 				version: foundDetail?.collected?.metadata?.version || "1.0.0",
 				description: foundDetail?.collected?.metadata?.description || "",
-				score: foundDetail?.score ? {
-					final: foundDetail.score,
-					detail: {
-						quality: foundDetail.score * 0.4, // Approximate distribution
-						popularity: foundDetail.score * 0.4,
-						maintenance: foundDetail.score * 0.2,
-					},
-				} : {
-					final: 0,
-					detail: {
-						quality: 0,
-						popularity: 0,
-						maintenance: 0,
-					},
-				},
+				score: foundDetail?.score
+					? {
+							final: foundDetail.score,
+							detail: {
+								quality: foundDetail.score * 0.4, // Approximate distribution
+								popularity: foundDetail.score * 0.4,
+								maintenance: foundDetail.score * 0.2,
+							},
+						}
+					: {
+							final: 0,
+							detail: {
+								quality: 0,
+								popularity: 0,
+								maintenance: 0,
+							},
+						},
 				stats: [
 					{ label: "Weekly Downloads", value: foundDetail?.downloads || 0 },
 					{ label: "Bundle Size", value: foundDetail?.size || 0 },

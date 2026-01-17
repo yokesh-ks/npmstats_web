@@ -17,7 +17,7 @@ import {
 	Terminal,
 	Users,
 } from "lucide-react";
-import { formatNumber } from "@/lib/utils";
+import { formatNumber, addUtmParameters } from "@/lib/utils";
 import { Badge } from "@/src/components/ui/badge";
 import { Button } from "@/src/components/ui/button";
 import { TabsList, TabsTrigger } from "@/src/components/ui/tabs";
@@ -98,7 +98,7 @@ export function TopPackageHead({ data }: PackageStatsCardProps) {
 				<div className="flex flex-wrap items-center gap-2">
 					<Button asChild variant="outline" size="sm" className="gap-1.5">
 						<a
-							href={`https://npmjs.com/package/${data._id}`}
+							href={addUtmParameters(`https://npmjs.com/package/${data._id}`)}
 							target="_blank"
 							rel="noopener noreferrer"
 						>
@@ -108,7 +108,11 @@ export function TopPackageHead({ data }: PackageStatsCardProps) {
 					</Button>
 					{data.homepage && (
 						<Button asChild variant="outline" size="sm" className="gap-1.5">
-							<a href={data.homepage} target="_blank" rel="noopener noreferrer">
+							<a
+								href={addUtmParameters(data.homepage)}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								Homepage
 								<ArrowUpRight className="h-3.5 w-3.5" />
 							</a>
@@ -117,9 +121,9 @@ export function TopPackageHead({ data }: PackageStatsCardProps) {
 					{data.repository?.url && (
 						<Button asChild variant="outline" size="sm" className="gap-1.5">
 							<a
-								href={data.repository.url
-									.replace("git+", "")
-									.replace(".git", "")}
+								href={addUtmParameters(
+									data.repository.url.replace("git+", "").replace(".git", ""),
+								)}
 								target="_blank"
 								rel="noopener noreferrer"
 							>

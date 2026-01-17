@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import { authorConfig } from "@/config/author";
 import { companyConfig } from "@/config/company";
 import { BackToTop } from "@/src/components/ui/back-to-top";
+import { addUtmParameters } from "@/src/lib/utils";
 
 const COPYRIGHT_YEAR = new Date().getFullYear();
 
@@ -202,7 +203,7 @@ function FooterContent() {
 							<span className="text-sm">
 								Copyright &copy; {COPYRIGHT_YEAR} by{" "}
 								<a
-									href={companyConfig.siteUrl}
+									href={addUtmParameters(companyConfig.siteUrl)}
 									target="_blank"
 									className="hover:text-primary-foreground"
 								>
@@ -216,7 +217,7 @@ function FooterContent() {
 							<span className="text-sm">
 								Made with <span className="text-[#FF0000]">&hearts;</span> by{" "}
 								<a
-									href={authorConfig.siteUrl}
+									href={addUtmParameters(authorConfig.siteUrl)}
 									target="_blank"
 									className="hover:text-primary-foreground"
 								>
@@ -288,8 +289,16 @@ function LinkedInIcon(props: React.SVGProps<SVGSVGElement>) {
 
 const socialLinks = [
 	{ name: "Twitter", href: "#", icon: TwitterIcon },
-	{ name: "GitHub", href: authorConfig.github, icon: GitHubIcon },
-	{ name: "LinkedIn", href: companyConfig.linkedin, icon: LinkedInIcon },
+	{
+		name: "GitHub",
+		href: addUtmParameters(authorConfig.github),
+		icon: GitHubIcon,
+	},
+	{
+		name: "LinkedIn",
+		href: addUtmParameters(companyConfig.linkedin),
+		icon: LinkedInIcon,
+	},
 ];
 
 const productLinks = [
@@ -309,15 +318,39 @@ const resourceLinks = [
 ];
 
 const companyLinks = [
-	{ name: "About Us", href: `${companyConfig.siteUrl}/about` },
-	{ name: "Careers", href: `${companyConfig.siteUrl}/careers` },
-	{ name: "Contact", href: `${companyConfig.siteUrl}/contact` },
-	{ name: "Privacy Policy", href: `${companyConfig.siteUrl}/privacy` },
-	{ name: "Terms of Service", href: `${companyConfig.siteUrl}/terms` },
+	{
+		name: "About Us",
+		href: addUtmParameters(`${companyConfig.siteUrl}/about`),
+	},
+	{
+		name: "Careers",
+		href: addUtmParameters(`${companyConfig.siteUrl}/careers`),
+	},
+	{
+		name: "Contact",
+		href: addUtmParameters(`${companyConfig.siteUrl}/contact`),
+	},
+	{
+		name: "Privacy Policy",
+		href: addUtmParameters(`${companyConfig.siteUrl}/privacy`),
+	},
+	{
+		name: "Terms of Service",
+		href: addUtmParameters(`${companyConfig.siteUrl}/terms`),
+	},
 ];
 
 const legalLinks = [
-	{ name: "Privacy Policy", href: `${companyConfig.siteUrl}/privacy` },
-	{ name: "Terms of Service", href: `${companyConfig.siteUrl}/terms` },
-	{ name: "Cookie Settings", href: `${companyConfig.siteUrl}/cookie-settings` },
+	{
+		name: "Privacy Policy",
+		href: addUtmParameters(`${companyConfig.siteUrl}/privacy`),
+	},
+	{
+		name: "Terms of Service",
+		href: addUtmParameters(`${companyConfig.siteUrl}/terms`),
+	},
+	{
+		name: "Cookie Settings",
+		href: addUtmParameters(`${companyConfig.siteUrl}/cookie-settings`),
+	},
 ];
